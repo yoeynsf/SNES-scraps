@@ -1,0 +1,36 @@
+Modules list:
+-------------
+funny.o:
+    ZEROPAGE          Offs=000000  Size=000024  Align=00001  Fill=0000
+    HEADER            Offs=000000  Size=000040  Align=00001  Fill=0000
+    LORAM             Offs=000000  Size=000220  Align=00001  Fill=0000
+    HIRAM             Offs=000000  Size=004200  Align=00001  Fill=0000
+    BANK0             Offs=000000  Size=0015D9  Align=00001  Fill=0000
+    BANK1             Offs=000000  Size=000100  Align=00001  Fill=0000
+
+
+Segment list:
+-------------
+Name                   Start     End    Size  Align
+----------------------------------------------------
+ZEROPAGE              000000  000023  000024  00001
+LORAM                 000200  00041F  000220  00001
+HIRAM                 7E2000  7E61FF  004200  00001
+BANK0                 808000  8095D8  0015D9  00001
+HEADER                80FFC0  80FFFF  000040  00001
+BANK1                 818000  8180FF  000100  00001
+
+
+Exports list by name:
+---------------------
+
+
+
+Exports list by value:
+----------------------
+
+
+
+Imports list:
+-------------
+
