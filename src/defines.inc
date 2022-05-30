@@ -30,3 +30,12 @@ SPR_CHR_SLOT13      = $18
 SPR_CHR_SLOT14      = $1A
 SPR_CHR_SLOT15      = $1C
 SPR_CHR_SLOT16      = $1E
+
+.macro LDPT addr
+    LDA #<addr
+    STA pointer 
+    LDA #>addr
+    STA pointer + 1
+    LDA #^addr
+    STA pointer + 2
+.endmacro

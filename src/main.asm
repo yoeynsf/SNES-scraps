@@ -7,66 +7,31 @@ clear_done:
 
     JSR spc_boot
 
-    LDA #<chr_0
-    STA pointer 
-    LDA #>chr_0
-    STA pointer + 1
-    LDA #^chr_0
-    STA pointer + 2
+    LDPT chr_0
     LDX #0
     JSR load_WRAM_sprite_table
 
-    LDA #<chr_1
-    STA pointer 
-    LDA #>chr_1
-    STA pointer + 1
-    LDA #^chr_1
-    STA pointer + 2
+    LDPT chr_1
     LDX #1
     JSR load_WRAM_sprite_table
 
-    LDA #<chr_2
-    STA pointer 
-    LDA #>chr_2
-    STA pointer + 1
-    LDA #^chr_2
-    STA pointer + 2
+    LDPT chr_2
     LDX #2
     JSR load_WRAM_sprite_table
 
-    LDA #<chr_3
-    STA pointer 
-    LDA #>chr_3
-    STA pointer + 1
-    LDA #^chr_3
-    STA pointer + 2
+    LDPT chr_3
     LDX #3
     JSR load_WRAM_sprite_table
 
-    LDA #<pal_0
-    STA pointer 
-    LDA #>pal_0
-    STA pointer + 1
-    LDA #^pal_0
-    STA pointer + 2
+    LDPT pal_0
     LDX #8
     JSR load_WRAM_CGRAM
 
-    LDA #<pal_1
-    STA pointer 
-    LDA #>pal_1
-    STA pointer + 1
-    LDA #^pal_1
-    STA pointer + 2
+    LDPT pal_1
     LDX #9
     JSR load_WRAM_CGRAM
 
-    LDA #<pal_2
-    STA pointer 
-    LDA #>pal_2
-    STA pointer + 1
-    LDA #^pal_2
-    STA pointer + 2
+    LDPT pal_2
     LDX #10
     JSR load_WRAM_CGRAM
 
