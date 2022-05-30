@@ -1,5 +1,5 @@
 .proc mainprep
-  setaxy8
+    setaxy8
 
     JML clearRAM
 clear_done:
