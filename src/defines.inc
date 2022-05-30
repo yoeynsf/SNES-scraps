@@ -14,23 +14,6 @@ KEY_B           = 1 << 15
 
 SPRITECHR_BASE  = $0000
 
-SPR_CHR_SLOT0       = $00
-SPR_CHR_SLOT1       = $02
-SPR_CHR_SLOT3       = $04
-SPR_CHR_SLOT4       = $06
-SPR_CHR_SLOT5       = $08
-SPR_CHR_SLOT6       = $0A
-SPR_CHR_SLOT7       = $0C
-SPR_CHR_SLOT8       = $0E
-SPR_CHR_SLOT9       = $10
-SPR_CHR_SLOT10      = $12
-SPR_CHR_SLOT11      = $14
-SPR_CHR_SLOT12      = $16
-SPR_CHR_SLOT13      = $18
-SPR_CHR_SLOT14      = $1A
-SPR_CHR_SLOT15      = $1C
-SPR_CHR_SLOT16      = $1E
-
 .macro LDPT addr
     LDA #<addr
     STA pointer 
