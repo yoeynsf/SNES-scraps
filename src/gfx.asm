@@ -29,3 +29,14 @@ pal_2:
   .incbin "output/pal/chr2.pal"
 pal_3:
   .incbin "output/pal/chr3.pal"
+
+spr_nami:
+    .byte $00, $00, $00, $00
+    .byte $08, $00, $01, $00
+    .byte $00, $08, $02, $00
+    .byte $08, $08, $03, $00
+    .byte $00, $10, $04, $00
+    .byte $08, $10, $05, $00
+    .byte $00, $18, $06, $00
+    .byte $08, $18, $07, $00
+    .byte $80

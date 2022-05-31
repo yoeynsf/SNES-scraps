@@ -11,28 +11,8 @@ clear_done:
     LDX #0
     JSR load_WRAM_sprite_table
 
-    LDPT chr_1
-    LDX #1
-    JSR load_WRAM_sprite_table
-
-    LDPT chr_2
-    LDX #2
-    JSR load_WRAM_sprite_table
-
-    LDPT chr_3
-    LDX #3
-    JSR load_WRAM_sprite_table
-
     LDPT pal_0
     LDX #8
-    JSR load_WRAM_CGRAM
-
-    LDPT pal_1
-    LDX #9
-    JSR load_WRAM_CGRAM
-
-    LDPT pal_2
-    LDX #10
     JSR load_WRAM_CGRAM
 
     LDA #(SPRITECHR_BASE >> 14) | OBSIZE_8_16
@@ -42,6 +22,8 @@ clear_done:
     BIT HVBJOY 
     BMI :-
     
+    LDA #$10
+    STA TM
     LDA #$0F
     STA PPUBRIGHT     ; $2100, turn the screen ON
     LDA #%10000000
@@ -56,6 +38,12 @@ clear_done:
     TAY 
     JSR sprite_prep
 
+    LDPT spr_nami
+    LDA #$78
+    STA TempX
+    LDA #104
+    STA TempY
+    JSR load_sprites
  
 
     JSR clear_sprites
