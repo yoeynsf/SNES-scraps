@@ -11,11 +11,19 @@ clear_done:
     LDX #0
     JSR load_WRAM_sprite_table
 
+    LDPT chr_1
+    LDX #1
+    JSR load_WRAM_sprite_table
+
+    LDPT chr_2
+    LDX #2
+    JSR load_WRAM_sprite_table
+
     LDPT pal_0
     LDX #8
     JSR load_WRAM_CGRAM
 
-    LDA #(SPRITECHR_BASE >> 14) | OBSIZE_8_16
+    LDA #(SPRITECHR_BASE >> 14) | OBSIZE_16_32
     STA OBSEL 
 
 :                       ; spin until vblank is over because the transfers
@@ -38,10 +46,10 @@ clear_done:
     TAY 
     JSR sprite_prep
 
-    LDPT spr_nami
-    LDA #$78
+    LDPT spr_owen
+    LDA #24 
     STA TempX
-    LDA #104
+    LDA #96
     STA TempY
     JSR load_sprites
  
@@ -54,3 +62,5 @@ WaitVBlank:
     BEQ WaitVBlank    ; This exists so our loop runs only once per frame.
     JMP main
 .endproc
+
+

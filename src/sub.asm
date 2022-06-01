@@ -130,6 +130,9 @@ clear_VRAM:
     STA OAM_buf, X
     INY
     INX
+    CPX #512
+    BNE :-
+    LDX #0
     JMP :-
     donesprite:
     CPX #512

@@ -5,7 +5,7 @@ funny.o:
     HEADER            Offs=000000  Size=000040  Align=00001  Fill=0000
     LORAM             Offs=000000  Size=000220  Align=00001  Fill=0000
     HIRAM             Offs=000000  Size=004200  Align=00001  Fill=0000
-    BANK0             Offs=000000  Size=0015C1  Align=00001  Fill=0000
+    BANK0             Offs=000000  Size=001627  Align=00001  Fill=0000
     BANK1             Offs=000000  Size=000100  Align=00001  Fill=0000
 
 
@@ -16,7 +16,7 @@ Name                   Start     End    Size  Align
 ZEROPAGE              000000  000023  000024  00001
 LORAM                 000200  00041F  000220  00001
 HIRAM                 7E2000  7E61FF  004200  00001
-BANK0                 808000  8095C0  0015C1  00001
+BANK0                 808000  809626  001627  00001
 HEADER                80FFC0  80FFFF  000040  00001
 BANK1                 818000  8180FF  000100  00001
 
