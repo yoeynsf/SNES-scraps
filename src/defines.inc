@@ -13,6 +13,12 @@ KEY_Y           = 1 << 14
 KEY_B           = 1 << 15
 
 SPRITECHR_BASE  = $0000
+BG0CHR_BASE     = $2000
+BG1CHR_BASE     = $3000
+BG2CHR_BASE     = $4000
+BG0MAP_BASE     = $5000
+BG1MAP_BASE     = $6000
+BG2MAP_BASE     = $7000
 
 .macro LDPT addr
     LDA #<addr

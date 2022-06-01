@@ -87,6 +87,71 @@ clear_VRAM:
     RTS 
 .endproc 
 
+bgchr_table:
+    .word BG0CHR_BASE, BG1CHR_BASE, BG2CHR_BASE
+
+.proc load_BGCHR
+    TXA 
+    ASL 
+    TAX 
+    LDA bgchr_table, X 
+    STA VMADDL
+    INX 
+    LDA bgchr_table, X 
+    STA VMADDH
+
+    LDA #$01         
+    STA DMAMODE
+    LDA #$18
+    STA DMAPPUREG
+    LDA pointer
+    STA DMAADDR 
+    LDA pointer + 1
+    STA DMAADDRHI
+    LDA pointer + 2
+    STA DMAADDRBANK
+    seta16
+    LDA #8192 
+    STA DMALEN
+    setaxy8
+    LDA #0 | 1 << 0
+    STA COPYSTART
+    RTS
+.endproc
+
+bgmap_table:
+    .word BG0MAP_BASE, BG1MAP_BASE, BG2MAP_BASE
+
+.proc load_BGMAP
+    TXA 
+    ASL 
+    TAX 
+    LDA bgmap_table, X 
+    STA VMADDL
+    INX 
+    LDA bgmap_table, X 
+    STA VMADDH
+
+    LDA #$01         
+    STA DMAMODE
+    LDA #$18
+    STA DMAPPUREG
+    LDA pointer
+    STA DMAADDR 
+    LDA pointer + 1
+    STA DMAADDRHI
+    LDA pointer + 2
+    STA DMAADDRBANK
+    seta16
+    LDA #2048 
+    STA DMALEN
+    setaxy8
+    LDA #0 | 1 << 0
+    STA COPYSTART
+    RTS
+.endproc 
+
+
 .proc sprite_prep
     setaxy16
 	LDA OAMposAtFrame

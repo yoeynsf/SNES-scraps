@@ -2,7 +2,9 @@ superfamiconv -D -F -R -i gfx/chr0.png -t output/chr/chr0.chr -p output/pal/chr0
 superfamiconv -D -F -R -i gfx/chr1.png -t output/chr/chr1.chr -p output/pal/chr1.pal -v
 superfamiconv -D -F -R -i gfx/chr2.png -t output/chr/chr2.chr -p output/pal/chr2.pal -v
 superfamiconv -D -F -R -i gfx/chr3.png -t output/chr/chr3.chr -p output/pal/chr3.pal -v
+superfamiconv -D -F -R -i gfx/bgchr0.png -t output/chr/bgchr0.chr -p output/pal/bgchr0.pal -v
 
+pause
 ca65 -g src/spc/spc.asm -o output/spc.o
 ld65 -C spc.cfg --dbgfile output/spc.dbg output/spc.o -o src/spc/driver.bin
 

@@ -12,6 +12,7 @@ pal_table_mid:
 pal_table_hi:
     .byte ^pal_0, ^pal_1, ^pal_2, ^pal_3
 
+; sprite CHRs (1K) - palettes
 chr_0:
   .incbin "output/chr/chr0.chr"
 chr_1:
@@ -29,6 +30,16 @@ pal_2:
   .incbin "output/pal/chr2.pal"
 pal_3:
   .incbin "output/pal/chr3.pal"
+
+; BG CHRs (8K) - palettes - maps (2K)
+bgchr_0:
+    .incbin "output/chr/bgchr0.chr"
+bgpal_0:
+    .incbin "output/pal/bgchr0.pal"
+bgmap_0:
+    .incbin "output/map/bg0.map"
+
+
 
 spr_owen:
     .byte 0, 0, $00, $00

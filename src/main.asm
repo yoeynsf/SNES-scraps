@@ -23,6 +23,18 @@ clear_done:
     LDX #8
     JSR load_WRAM_CGRAM
 
+    LDPT bgchr_0
+    LDX #0 
+    JSR load_BGCHR
+
+    LDPT bgmap_0
+    LDX #0 
+    JSR load_BGMAP
+
+    LDPT bgpal_0
+    LDX #0
+    JSR load_WRAM_CGRAM
+
     LDA #(SPRITECHR_BASE >> 14) | OBSIZE_16_32
     STA OBSEL 
 
@@ -30,7 +42,22 @@ clear_done:
     BIT HVBJOY 
     BMI :-
     
-    LDA #$10
+    LDA #1
+    STA BGMODE
+
+    LDA #((BG0MAP_BASE >> 10) << 2) | 1
+    STA BG1SC
+    LDA #(BG1MAP_BASE >> 10) << 2
+    STA BG2SC
+    LDA #(BG2MAP_BASE >> 10) << 2
+    STA BG3SC
+
+    LDA #(BG1CHR_BASE >> 8 | BG0CHR_BASE >> 12)
+    STA BG12NBA
+    LDA #(BG2CHR_BASE >> 12)
+    STA BG34NBA
+
+    LDA #%00010111
     STA TM
     LDA #$0F
     STA PPUBRIGHT     ; $2100, turn the screen ON
@@ -47,7 +74,7 @@ clear_done:
     JSR sprite_prep
 
     LDPT spr_owen
-    LDA #24 
+    LDA #32
     STA TempX
     LDA #96
     STA TempY
