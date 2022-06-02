@@ -19,7 +19,7 @@
 :
     setaxy8
 
-    ;JSR HDMA_prep
+    JSR HDMA_prep
 
     INC framecounter
 	PLY       
@@ -52,9 +52,9 @@
 
 
 .proc HDMA_prep
-    LDA #3          ; 011 == Write 4 bytes, B0->$21XX, B1->$21XX B2->$21XX+1 B3->$21XX+1
+    LDA #2         
     STA DMAMODE
-    LDA CGADDR
+    LDA #<BGSCROLLX
     STA DMAPPUREG
     LDA #<hdma_table
     STA DMAADDR
@@ -62,70 +62,101 @@
     STA DMAADDRHI
     LDA #^hdma_table
     STA DMAADDRBANK
-
-
-    LDA #$43          ; indrect, Write 4 bytes -- B0->$21XX, B1->$21XX B2->$21XX+1 B3->$21XX+1
-    STA DMAMODE | 1 << 4
-    LDA CGADDR
-    STA DMAPPUREG | 1 << 4
-    LDA #<indirect_hdma_table
-    STA DMAADDR | 1 << 4
-    LDA #>indirect_hdma_table
-    STA DMAADDRHI | 1 << 4
-    LDA #^indirect_hdma_table
-    STA DMAADDRBANK | 1 << 4
-
-    LDA #^hdma_ram
-    STA HDMAINDBANK | 1 << 4
-
-    LDA #3
-    STA HDMASTART 
-
-    LDA #$FF
-    STA hdma_ram + 2
-    LDA #$7F
-    STA hdma_ram + 3
-        
-    LDA #%00000000
-    STA hdma_ram + 6
-    LDA #%01000011
-    STA hdma_ram + 7
+    LDA #1
+    STA HDMASTART
     RTS 
 .endproc
 
 hdma_table:
-    .byte $10
-    .byte $00, $00, $FF, $7F
-    .byte $04
-    .byte $00, $00, $1F, $00
-    .byte $04
-    .byte $00, $00, $28, $04
-    .byte $04
-    .byte $00, $00, $40, $48
-    .byte $04
-    .byte $00, $00, $80, $7C
-    .byte $04
-    .byte $00, $00, $1F, $00
-    .byte $04
-    .byte $00, $00, $28, $04
-    .byte $04
-    .byte $00, $00, $40, $48
-    .byte $04
-    .byte $00, $00, $80, $7C
-    .byte $04
-    .byte $00, $00, $FF, $7F
+    .byte 75
+    .byte BGOFFSET, $00
+    .byte 36
+    .byte BGOFFSET - 40, $00
+    .byte 15
+    .byte BGOFFSET - 24, $00
+    .byte 2
+    .byte BGOFFSET - 23, $00
+    .byte 2
+    .byte BGOFFSET - 22, $00
+    .byte 2
+    .byte BGOFFSET - 21, $00
+    .byte 20
+    .byte BGOFFSET - 20, $00
+    .byte 2
+    .byte BGOFFSET + 1, $00
+    .byte 2
+    .byte BGOFFSET + 2, $00
+    .byte 2
+    .byte BGOFFSET + 3, $00
+    .byte 2
+    .byte BGOFFSET + 4, $00
+    .byte 2
+    .byte BGOFFSET + 5, $00
+    .byte 2
+    .byte BGOFFSET + 6, $00
+    .byte 2
+    .byte BGOFFSET + 7, $00
+    .byte 2
+    .byte BGOFFSET + 8, $00
+    .byte 2
+    .byte BGOFFSET + 9, $00
+    .byte 2
+    .byte BGOFFSET + 10, $00
+    .byte 2
+    .byte BGOFFSET + 11, $00
+    .byte 2
+    .byte BGOFFSET + 12, $00
+    .byte 2
+    .byte BGOFFSET + 13, $00
+    .byte 2
+    .byte BGOFFSET + 14, $00
+    .byte 2
+    .byte BGOFFSET + 15, $00
+    .byte 2
+    .byte BGOFFSET + 16, $00
+    .byte 2
+    .byte BGOFFSET + 17, $00
+    .byte 2
+    .byte BGOFFSET + 18, $00
+    .byte 2
+    .byte BGOFFSET + 19, $00
+    .byte 2
+    .byte BGOFFSET + 20, $00
+    .byte 2
+    .byte BGOFFSET + 21, $00
+    .byte 2
+    .byte BGOFFSET + 22, $00
+    .byte 2
+    .byte BGOFFSET + 23, $00
+    .byte 2
+    .byte BGOFFSET + 24, $00
+    .byte 2
+    .byte BGOFFSET + 25, $00
+    .byte 2
+    .byte BGOFFSET + 26, $00
+    .byte 2
+    .byte BGOFFSET + 27, $00
+    .byte 2
+    .byte BGOFFSET + 28, $00
+    .byte 2
+    .byte BGOFFSET + 29, $00
+    .byte 2
+    .byte BGOFFSET + 30, $00
+    .byte 2
+    .byte BGOFFSET + 31, $00
+    .byte 2
+    .byte BGOFFSET + 32, $00
+    .byte 2
+    .byte BGOFFSET + 33, $00
+    .byte 2
+    .byte BGOFFSET + 34, $00
+    .byte 2
+    .byte BGOFFSET + 35, $00
+    .byte 2
+    .byte BGOFFSET, $00
 end:
     .byte $00
 
-indirect_hdma_table:
-    .byte $4F
-    .byte <hdma_ram, >hdma_ram 
-    .byte $10
-    .byte <hdma_color, >hdma_color
-    .byte $10
-    .byte <hdma_ram, >hdma_ram 
-end2:
-    .byte $00
 
 .proc DMA_sprite_graphics  
 var_index       =   temp 

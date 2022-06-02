@@ -120,7 +120,7 @@ bgchr_table:
 .endproc
 
 bgmap_table:
-    .word BG0MAP_BASE, BG1MAP_BASE, BG2MAP_BASE
+    .word BG0MAP_BASE, BG0MAP2_BASE, BG1MAP_BASE, BG2MAP_BASE
 
 .proc load_BGMAP
     TXA 

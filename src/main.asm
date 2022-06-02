@@ -31,6 +31,10 @@ clear_done:
     LDX #0 
     JSR load_BGMAP
 
+    LDPT bgmap_1
+    LDX #1 
+    JSR load_BGMAP
+
     LDPT bgpal_0
     LDX #0
     JSR load_WRAM_CGRAM
@@ -57,6 +61,10 @@ clear_done:
     LDA #(BG2CHR_BASE >> 12)
     STA BG34NBA
 
+    LDA #BGOFFSET
+    STA BG1HOFS
+    STZ BG1HOFS
+
     LDA #%00010111
     STA TM
     LDA #$0F
@@ -74,7 +82,7 @@ clear_done:
     JSR sprite_prep
 
     LDPT spr_owen
-    LDA #32
+    LDA #16
     STA TempX
     LDA #96
     STA TempY
