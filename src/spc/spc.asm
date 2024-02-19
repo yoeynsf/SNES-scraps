@@ -8,12 +8,17 @@ SPC_control_buf:    .res 1
 
 .segment "SPCBSS"
 
+
+;--------------------------------------
+
 .segment "SPCDRIVER"
 spc_entrypoint:
+    
     jsr driver_init
 wait_tick:
-    
     jmp wait_tick 
+
+;--------------------------------------
 
 .proc driver_init    
 

@@ -12,8 +12,9 @@
 
     LDA #$FF        ; write a nonzero to initiate transfer
     STA APU1          
-    LDA #$03        ; set transfer address to $0300
-    STA APU2
+    
+    STZ APU2        ; set transfer address to $0300
+    LDA #$03
     STA APU3
 
     LDA #$CC        ; IPL bootrom expects $CC
@@ -45,7 +46,7 @@ transfer_driver:
 ; transfer is finished, execute program
  
     LDA #$03    ; write entry point address
-    STA APU2
+    STZ APU2
     STA APU3
 
     LDA SPC_transfer_counter    ; completed
